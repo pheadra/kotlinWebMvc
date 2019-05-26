@@ -1,11 +1,19 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	kotlin("plugin.jpa") version "1.2.31"
+	val kotlinVersion = "1.2.31"
+	kotlin("plugin.jpa") version kotlinVersion
 	id("org.springframework.boot") version "2.1.5.RELEASE"
 	id("io.spring.dependency-management") version "1.0.7.RELEASE"
-	kotlin("jvm") version "1.2.71"
-	kotlin("plugin.spring") version "1.2.71"
+	kotlin("jvm") version kotlinVersion
+	kotlin("plugin.spring") version kotlinVersion
+	id("com.adarshr.test-logger") version "1.6.0"
+	id("de.jansauer.printcoverage") version "2.0.0"
+}
+
+// kotlin-spring, kotlin-jpa를 안해도 되나???
+apply {
+	from("config/test.gradle")
 }
 
 group = "io.haru"

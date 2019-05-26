@@ -1,0 +1,30 @@
+POST localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "username": "luke.park",
+  "email": "luke.park@toss.im",
+  "password": "1234",
+  "name": "박중운"
+}
+
+###
+
+POST localhost:8080/api/auth/signin
+Content-Type: application/json
+
+{
+  "usernameOrEmail": "luke.park",
+  "password": "1234"
+}
+
+> {%
+client.global.set("accessToken", response.body.accessToken);
+client.log("accessToken: "+client.global.get("accessToken"));
+%}
+###
+
+GET localhost:8080/api/user/me
+Authorization: Bearer {{accessToken}}
+
+###

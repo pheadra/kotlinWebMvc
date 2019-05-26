@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api")
 class UserController {
     // 일부러 Autowired 써봄. 주로 생성자 주입을 많이 쓰지만.. 이렇게도 가능함
     @Autowired

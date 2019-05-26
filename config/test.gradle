@@ -1,0 +1,46 @@
+apply plugin: 'jacoco'
+
+testlogger {
+    theme 'standard-parallel'
+    showExceptions true
+    slowThreshold 2000
+    showSummary true
+    showPassed true
+    showSkipped true
+    showFailed true
+    showStandardStreams false
+    showPassedStandardStreams false
+    showSkippedStandardStreams false
+    showFailedStandardStreams false
+}
+
+jacocoTestCoverageVerification {
+    dependsOn jacocoTestReport
+    violationRules {
+        rule {
+            element = 'CLASS'
+
+            limit {
+                counter = 'INSTRUCTION'
+                minimum = 0.600000000
+            }
+        }
+    }
+}
+
+printCoverage {
+    dependsOn 'jacocoTestReport'
+    coverageType = 'INSTRUCTION'
+}
+
+jacoco {
+    toolVersion = "0.8.3"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+    executionData = fileTree(dir: 'build/jacoco', include: '**/*.exec')
+}

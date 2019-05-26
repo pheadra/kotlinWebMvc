@@ -15,9 +15,9 @@ import javax.persistence.MappedSuperclass
 abstract class DateAudit : Serializable {
 
     @CreatedDate
-    val createdAt: Instant? = null
+    var createdAt: Instant? = null
 
     @LastModifiedDate
-    val updatedAt: Instant? = null
+    var updatedAt: Instant? = null
 
 }
